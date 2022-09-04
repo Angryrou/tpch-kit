@@ -1,12 +1,12 @@
-pwd=${PWD}
 out=${PWD}/outs
 rm -rf $out
 mkdir -p $out
 
-cd dbgen
+export DSS_CONFIG=$PWD/dbgen
+export DSS_QUERY=${DSS_CONFIG}/queries_sparksql
 
 for i in {1..22}
 do 
-	./spark_wrapper.sh "./qgen -d -s 1 ${i}" ${out}/${i}.sql 
-	diff ${pwd}/groundtruth_spark_queries/${i}.sql ${out}/${i}.sql 
+	dbgen/spark_wrapper.sh "qgen -d -s 1 ${i}" ${out}/${i}.sql 
+	diff $PWD/groundtruth_spark_queries/${i}.sql ${out}/${i}.sql 
 done

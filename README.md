@@ -34,13 +34,14 @@ Query Template Modification for SparkSQL
 Query Generation for SparkSQL
 -----------------------------
 
-Step1: go to the directory `dbgen`
+Step1: set the env variables for `DSS_CONFIG` and `DSS_QUERY`
 
 Step2: use the `dbgen/spark_wrapper.sh` to feed (1) the original `qgen` command, (2) the path of the output
 
   ```bash
-  cd dbgen
-  ./spark_wrapper.sh "./qgen -d -s 1 1" out/1.sql 
+  export DSS_CONFIG=$PWD/dbgen
+  export DSS_QUERY=${DSS_CONFIG}/queries_sparksql
+  dbgen/spark_wrapper.sh "qgen -d -s 1 1" out/1.sql 
   ```
 
 Query Verification
