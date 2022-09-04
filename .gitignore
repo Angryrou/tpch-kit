@@ -2,3 +2,6 @@
 *.tbl
 dbgen/dbgen
 dbgen/qgen
+dbgen/out
+.DS_Store
+outs
